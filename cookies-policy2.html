@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookies Policy | Zyvra Jewelry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+
+        /* Base styles */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Policy Container */
+        .cookies-policy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: rgba(10, 10, 10, 0.85); /* Semi-transparent dark background */
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .policy-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #fff, #aaa);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .policy-header p {
+            color: #ccc;
+        }
+
+        .policy-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: rgba(20, 20, 20, 0.5);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .policy-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .policy-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .policy-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #fff, transparent);
+        }
+
+        .policy-section p {
+            margin-bottom: 15px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .policy-section ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .policy-section li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .policy-section li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .cookie-type {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: rgba(30, 30, 30, 0.7);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-type:hover {
+            background-color: rgba(40, 40, 40, 0.7);
+            transform: translateX(10px);
+        }
+
+        .cookie-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .cookie-type h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .cookie-type p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 5px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .contact-link {
+            color: #fff;
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        .contact-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .contact-link:hover::after {
+            width: 100%;
+        }
+
+        /* Navigation */
+        .policy-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            background-color: rgba(20, 20, 20, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .policy-nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+        }
+
+        .policy-nav li {
+            margin: 0;
+        }
+
+        .policy-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .policy-nav a:hover {
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cookies-policy-container {
+                padding: 20px;
+            }
+
+            .policy-header h1 {
+                font-size: 2rem;
+            }
+
+            .policy-section {
+                padding: 20px;
+            }
+
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .policy-nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .policy-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .cookie-type {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cookie-icon {
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cookies-policy-container">
+        <!-- Navigation -->
+        <nav class="policy-nav">
+            <ul>
+                <li><a href="full-website.html">Home</a></li>
+                <li><a href="full-website.html#product-listing-page">Shop</a></li>
+                <li><a href="privacy-policy.html">About</a></li>
+                <li><a href="full-website.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="policy-header">
+            <h1>Cookies Policy</h1>
+            <p>Last Updated: <span class="highlight">June 2025</span></p>
+        </div>
+
+        <section class="policy-section">
+            <h2>1. Introduction</h2>
+            <p>Welcome to Zyvra Jewelry's Cookies Policy. This policy explains how we use cookies and similar tracking technologies on our website. By using our website, you consent to the use of cookies in accordance with this policy.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>2. What Are Cookies?</h2>
+            <p>Cookies are small text files stored on your device (computer, smartphone, or tablet) when you visit a website. They help improve your browsing experience by:</p>
+            <ul>
+                <li>Remembering your preferences</li>
+                <li>Analyzing website traffic</li>
+                <li>Personalizing content and ads</li>
+                <li>Enabling certain functionalities (e.g., shopping cart, login sessions)</li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>3. Types of Cookies We Use</h2>
+            
+            <div class="cookie-type">
+                <div class="cookie-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Essential Cookies</h3>
+                    <p>Necessary for the website to function properly. They enable core features like user authentication and shopping cart functionality.</p>
+                </div>
+            </div>
+            
+            <div class="cookie-type">
+                <div class="cookie-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Performance & Analytics Cookies</h3>
+                    <p>Help us understand how visitors interact with our website by collecting anonymous data to improve performance.</p>
+                </div>
+            </div>
+            
+            <div class="cookie-type">
+                <div class="cookie-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Functional Cookies</h3>
+                    <p>Enhance your experience by remembering preferences (e.g., language settings, font size).</p>
+                </div>
+            </div>
+            
+            <div class="cookie-type">
+                <div class="cookie-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                </div>
+                <div>
+                    <h3>Marketing & Advertising Cookies</h3>
+                    <p>Track browsing habits to deliver personalized ads. They may be set by third-party services.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="policy-section">
+            <h2>4. How to Manage Cookies</h2>
+            <p>You can control or disable cookies through your browser settings. However, blocking essential cookies may affect website functionality.</p>
+            
+            <h3>Browser Controls:</h3>
+            <ul>
+                <li><span class="highlight">Chrome:</span> Settings > Privacy & Security > Cookies</li>
+                <li><span class="highlight">Firefox:</span> Options > Privacy & Security > Cookies</li>
+                <li><span class="highlight">Safari:</span> Preferences > Privacy > Cookies</li>
+                <li><span class="highlight">Edge:</span> Settings > Privacy, Search & Services > Cookies</li>
+            </ul>
+            
+            <h3>Third-Party Opt-Outs:</h3>
+            <ul>
+                <li><a href="https://tools.google.com/dlpage/gaoptout" class="highlight" target="_blank">Google Analytics Opt-Out</a></li>
+                <li><a href="https://optout.networkadvertising.org/" class="highlight" target="_blank">Network Advertising Initiative (NAI)</a></li>
+            </ul>
+        </section>
+
+        <section class="policy-section">
+            <h2>5. Changes to This Policy</h2>
+            <p>We may update this Cookies Policy periodically. Any changes will be posted on this page with an updated "Last Revised" date.</p>
+        </section>
+
+        <section class="policy-section">
+            <h2>6. Contact Us</h2>
+            <p>If you have questions about our Cookies Policy, please contact us at:</p>
+            <p>📧 <a href="mailto:privacy@zyvra.com" class="contact-link">privacy@zyvra.com</a></p>
+            <p>📍 [Insert Company Address]</p>
+        </section>
+    </div>
+
+    <script>
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate policy sections sequentially
+            const sections = document.querySelectorAll('.policy-section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${0.5 + index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

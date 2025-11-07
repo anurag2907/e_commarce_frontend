@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zyvra Jewelry</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Base styles from original file */
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: sans-serif;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: white;
+      text-decoration: none;
+    }
+    
+    nav ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+    
+    nav li {
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    nav li:hover {
+      color: #ccc;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .icon-button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 5px;
+    }
+    
+    .search-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 200;
+    }
+    
+    .search-box {
+      position: relative;
+      width: 60%;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid white;
+      color: white;
+      font-size: 18px;
+    }
+    
+    .search-close {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+    main {
+      margin-top: 80px;
+    }
+    
+    .hero-image {
+      position: relative;
+      width: 100%;
+      height: 80vh;
+      overflow: hidden;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero-text {
+      position: absolute;
+      bottom: 100px;
+      left: 50px;
+      font-size: 48px;
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+    
+    .btn-shop-now {
+      position: absolute;
+      bottom: 50px;
+      left: 50px;
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 12px 30px;
+      font-size: 16px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-shop-now:hover {
+      background: white;
+      color: black;
+    }
+    
+    .products-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      padding: 50px;
+    }
+    
+    .product-card {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    
+    .product-card:hover::before {
+      border-color: white;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+    
+    .product-image {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    
+    .product-name {
+      margin-top: 15px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    /* Auth Modal Styles */
+    .auth-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .auth-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .auth-container {
+      position: relative;
+      width: 800px;
+      height: 500px;
+      background-color: #111;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .auth-container:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 10;
+      transition: transform 0.3s ease;
+    }
+
+    .close-modal:hover {
+      transform: rotate(90deg);
+    }
+
+    .auth-forms {
+      width: 50%;
+      padding: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .auth-form {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .auth-form.active {
+      display: flex;
+    }
+
+    .auth-form h2 {
+      color: white;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    .form-group {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: white;
+      margin-bottom: 5px;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      outline: none;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-bottom-color: white;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 16px;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus ~ label,
+    .form-group input:valid ~ label {
+      top: -15px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .auth-btn {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      padding: 12px;
+      margin-top: 20px;
+      cursor: pointer;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .auth-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .auth-switch {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 14px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .auth-switch span {
+      color: white;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: all 0.3s ease;
+    }
+
+    .auth-switch span:hover {
+      color: #ccc;
+    }
+
+    .auth-decoration {
+      width: 50%;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.7));
+    }
+
+    /* Password strength indicator */
+    .password-strength {
+      margin-top: 5px;
+      height: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .strength-bar {
+      height: 3px;
+      width: 0%;
+      background: transparent;
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+
+    .strength-text {
+      margin-left: 10px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Username availability indicator */
+    .username-availability {
+      font-size: 12px;
+      margin-top: 5px;
+      height: 15px;
+    }
+
+    /* Shooting stars animation */
+    .shooting-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .shooting-stars::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+                  0 0 0 8px rgba(255, 255, 255, 0.1),
+                  0 0 20px rgba(255, 255, 255, 0.1);
+      animation: animate 3s linear infinite;
+    }
+
+    .shooting-stars::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+                  0 0 0 8px rgba(255, 255, 255, 0.1),
+                  0 0 20px rgba(255, 255, 255, 0.1);
+      animation: animate 3s linear infinite;
+      animation-delay: -1.5s;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: rotate(215deg) translateX(0);
+        opacity: 1;
+      }
+      70% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(215deg) translateX(-500px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a role="banner" class="logo" tabindex="-1" aria-label="Zyvra logo">
+      ZYVRA
+    </a>
+    <nav role="navigation" aria-label="Primary navigation">
+      <ul>
+        <li tabindex="0">Home</li>
+        <li tabindex="0">Shop</li>
+        <li tabindex="0">About</li>
+        <li tabindex="0">Contact</li>
+      </ul>
+    </nav>
+    <div class="header-actions" aria-label="Search and Cart actions">
+      <button id="searchBtn" class="icon-button" aria-label="Open search box" title="Search" tabindex="0">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+      <button class="icon-button" aria-label="View cart" title="Cart" tabindex="0">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+      </button>
+      <button id="loginBtn" class="icon-button" aria-label="Login or sign up" title="Account" tabindex="0">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-label="Search products or categories">
+    <form class="search-box" onsubmit="return handleSearchSubmit(event)" role="search" aria-labelledby="searchLabel">
+      <input type="search" id="searchInput" placeholder="Search for products, rings, chains..." aria-describedby="searchLabel" aria-required="true" autocomplete="off"/>
+      <button type="button" class="search-close" aria-label="Close search box" id="closeSearchBtn">&times;</button>
+    </form>
+  </div>
+
+  <main>
+    <section class="hero-image" aria-label="Portrait of man wearing silver chain and ring on black background">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/42737eee-0b92-4fba-80a4-4085d11e14d5.png" alt="Portrait of a man with closed eyes wearing a silver chain necklace and ring, with a dark black background"/>
+      <div class="hero-text" aria-live="polite" aria-atomic="true">Elevate The Basics. Own The Detail.</div>
+      <button class="btn-shop-now" aria-label="Shop now button">SHOP NOW</button>
+    </section>
+
+    <section class="products-section" aria-label="Featured jewelry products">
+      <article class="product-card" tabindex="0" role="link" aria-label="Oval Link Necklace product">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bb7c3f16-601f-4217-b8d6-8c07f6b50cef.png" alt="Oval silver necklace with chain links" class="product-image" />
+        <div class="product-name">Oval Link Necklace</div>
+      </article>
+      <article class="product-card" tabindex="0" role="link" aria-label="Rounded Silver Ring product">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bb7c3f16-601f-4217-b8d6-8c07f6b50cef.png" alt="Rounded silver ring jewelry with smooth finish" class="product-image" />
+        <div class="product-name">Rounded Silver Ring</div>
+      </article>
+      <article class="product-card" tabindex="0" role="link" aria-label="Chunky Chain Bracelet product">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/48ef0d48-d5be-4ecb-9eb1-5638fe64cdf1.png" alt="Chunky silver chain bracelet jewelry piece" class="product-image" />
+        <div class="product-name">Chunky Chain Bracelet</div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Auth Modal -->
+  <div class="auth-modal" id="authModal" aria-hidden="true">
+    <div class="auth-container">
+      <button class="close-modal" id="closeModalBtn" aria-label="Close authentication modal">
+        &times;
+      </button>
+      
+      <div class="auth-forms">
+        <!-- Login Form -->
+        <form class="auth-form active" id="loginForm">
+          <h2>Welcome Back</h2>
+          <div class="form-group">
+            <input type="text" id="loginUsername" required autocomplete="username">
+            <label for="loginUsername">Username</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="loginPassword" required autocomplete="current-password">
+            <label for="loginPassword">Password</label>
+          </div>
+          <button type="submit" class="auth-btn">Login</button>
+          <p class="auth-switch">Don't have an account? <span id="showSignup">Sign up</span></p>
+        </form>
+        
+        <!-- Signup Form -->
+        <form class="auth-form" id="signupForm">
+          <h2>Create Account</h2>
+          <div class="form-group">
+            <input type="email" id="signupEmail" required autocomplete="email">
+            <label for="signupEmail">Email</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="signupUsername" required autocomplete="username">
+            <label for="signupUsername">Username</label>
+            <div class="username-availability"></div>
+          </div>
+          <div class="form-group">
+            <input type="password" id="signupPassword" required autocomplete="new-password">
+            <label for="signupPassword">Password</label>
+            <div class="password-strength">
+              <span class="strength-bar"></span>
+              <span class="strength-text"></span>
+            </div>
+          </div>
+          <button type="submit" class="auth-btn">Sign Up</button>
+          <p class="auth-switch">Already have an account? <span id="showLogin">Login</span></p>
+        </form>
+      </div>
+      
+      <div class="auth-decoration">
+        <div class="shooting-stars"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Search functionality
+    const searchBtn = document.getElementById('searchBtn');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const closeSearchBtn = document.getElementById('closeSearchBtn');
+    
+    searchBtn.addEventListener('click', () => {
+      searchOverlay.style.display = 'flex';
+    });
+    
+    closeSearchBtn.addEventListener('click', () => {
+      searchOverlay.style.display = 'none';
+    });
+    
+    function handleSearchSubmit(e) {
+      e.preventDefault();
+      const searchTerm = document.getElementById('searchInput').value;
+      alert(`Searching for: ${searchTerm}`);
+      searchOverlay.style.display = 'none';
+      return false;
+    }
+
+    // Auth Modal Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const authModal = document.getElementById('authModal');
+      const loginBtn = document.getElementById('loginBtn');
+      const closeModalBtn = document.getElementById('closeModalBtn');
+      const showSignup = document.getElementById('showSignup');
+      const showLogin = document.getElementById('showLogin');
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      const signupUsername = document.getElementById('signupUsername');
+      const signupPassword = document.getElementById('signupPassword');
+      const usernameAvailability = document.querySelector('.username-availability');
+      const strengthBar = document.querySelector('.strength-bar');
+      const strengthText = document.querySelector('.strength-text');
+      
+      // Toggle modal
+      loginBtn.addEventListener('click', () => {
+        authModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+      
+      closeModalBtn.addEventListener('click', () => {
+        authModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+      
+      // Switch between login and signup
+      showSignup.addEventListener('click', () => {
+        loginForm.classList.remove('active');
+        signupForm.classList.add('active');
+      });
+      
+      showLogin.addEventListener('click', () => {
+        signupForm.classList.remove('active');
+        loginForm.classList.add('active');
+      });
+      
+      // Close modal when clicking outside
+      authModal.addEventListener('click', (e) => {
+        if (e.target === authModal) {
+          authModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      });
+      
+      // Username availability check (simulated)
+      signupUsername.addEventListener('input', function() {
+        const username = this.value.trim();
+        if (username.length < 3) {
+          usernameAvailability.textContent = '';
+          return;
+        }
+        
+        // Simulate async check
+        setTimeout(() => {
+          // This is a simulation - in a real app you'd check against a database
+          const takenUsernames = ['admin', 'user', 'test', 'zyvra'];
+          if (takenUsernames.includes(username.toLowerCase())) {
+            usernameAvailability.textContent = 'Username is taken';
+            usernameAvailability.style.color = '#ff5555';
+          } else {
+            usernameAvailability.textContent = 'Username is available';
+            usernameAvailability.style.color = '#55ff55';
+          }
+        }, 500);
+      });
+      
+      // Password strength check
+      signupPassword.addEventListener('input', function() {
+        const password = this.value;
+        const strength = calculatePasswordStrength(password);
+        
+        strengthBar.style.width = `${strength.percentage}%`;
+        strengthBar.style.backgroundColor = strength.color;
+        strengthText.textContent = strength.text;
+        strengthText.style.color = strength.color;
+      });
+      
+      // Form submissions
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Add your login logic here
+        alert('Login functionality would go here');
+      });
+      
+      signupForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Add your signup logic here
+        alert('Signup functionality would go here');
+      });
+      
+      // Password strength calculator
+      function calculatePasswordStrength(password) {
+        let strength = 0;
+        const hasLower = /[a-z]/.test(password);
+        const hasUpper = /[A-Z]/.test(password);
+        const hasNumber = /[0-9]/.test(password);
+        const hasSpecial = /[^a-zA-Z0-9]/.test(password);
+        const length = password.length;
+        
+        if (length > 5) strength += 1;
+        if (length > 8) strength += 1;
+        if (hasLower) strength += 1;
+        if (hasUpper) strength += 1;
+        if (hasNumber) strength += 1;
+        if (hasSpecial) strength += 1;
+        
+        if (length < 6) {
+          return {
+            percentage: 25,
+            color: '#ff5555',
+            text: 'Weak'
+          };
+        } else if (strength < 4) {
+          return {
+            percentage: 50,
+            color: '#ffaa55',
+            text: 'Fair'
+          };
+        } else if (strength < 6) {
+          return {
+            percentage: 75,
+            color: '#55aaff',
+            text: 'Good'
+          };
+        } else {
+          return {
+            percentage: 100,
+            color: '#55ff55',
+            text: 'Strong'
+          };
+        }
+      }
+    });
+  </script>
+</body>
+</html>

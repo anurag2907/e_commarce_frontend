@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zvyar - Luxury Jewelry</title>
+    <link rel="stylesheet" href="product-listing-css.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <a href="#" class="logo">ZVYAR</a>
+            <div class="sort-options">
+                <select>
+                    <option>Sort by: Default</option>
+                    <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Best Selling</option>
+                    <option>Newest First</option>
+                </select>
+            </div>
+        </header>
+        
+        <!-- Sidebar Filters -->
+        <aside class="sidebar" id="sidebar">
+            <h2>Filter by</h2>
+            
+            <div class="filter-group">
+                <h3>Category</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="category-bracelets" name="category" checked>
+                    <label for="category-bracelets">Bracelets</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="category-necklaces" name="category" checked>
+                    <label for="category-necklaces">Necklaces</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="category-earrings" name="category" checked>
+                    <label for="category-earrings">Earrings</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="category-rings" name="category">
+                    <label for="category-rings">Rings</label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <div class="filter-option">
+                    <input type="radio" id="price-all" name="price" checked>
+                    <label for="price-all">All Prices</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="price-under-2000" name="price">
+                    <label for="price-under-2000">Under Rs. 2,000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="price-2000-5000" name="price">
+                    <label for="price-2000-5000">Rs. 2,000 - 5,000</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="price-over-5000" name="price">
+                    <label for="price-over-5000">Over Rs. 5,000</label>
+                </div>
+            </div>
+            
+            <div class="filter-group">
+                <h3>Color</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="color-gold" name="color" checked>
+                    <label for="color-gold">Gold</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="color-silver" name="color" checked>
+                    <label for="color-silver">Silver</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="color-rosegold" name="color">
+                    <label for="color-rosegold">Rose Gold</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="color-platinum" name="color">
+                    <label for="color-platinum">Platinum</label>
+                </div>
+            </div>
+            
+            <h2>Sort by</h2>
+            <div class="filter-group">
+                <div class="filter-option">
+                    <input type="radio" id="sort-default" name="sort" checked>
+                    <label for="sort-default">Default</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="sort-price-low" name="sort">
+                    <label for="sort-price-low">Price: Low to High</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="sort-price-high" name="sort">
+                    <label for="sort-price-high">Price: High to Low</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="sort-best-selling" name="sort">
+                    <label for="sort-best-selling">Best Selling</label>
+                </div>
+                <div class="filter-option">
+                    <input type="radio" id="sort-newest" name="sort">
+                    <label for="sort-newest">Newest First</label>
+                </div>
+            </div>
+            
+            <button class="mobile-filter-btn" id="close-filters">Close Filters</button>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <button class="mobile-filter-btn" id="open-filters">Show Filters</button>
+            
+            <div class="products-grid" id="products-container">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="product-listing-js.js"></script>
+</body>
+</html>

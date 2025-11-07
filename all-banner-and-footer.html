@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zyvra Webpage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        /* General body and font styles */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* New Banner Section Styles */
+        .new-banner {
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .new-banner-content {
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .explore-link {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .explore-link:hover {
+            color: #ccc;
+        }
+
+        .new-banner h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        
+        .new-banner p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Promotional Banner */
+        .banner-container {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            max-width: 1200px;
+            margin: 40px auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .banner-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://wallpapers.com/images/featured/black-topographic-pbtm4zynr6ggmds3.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .banner-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .promo-text {
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .discount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin: 10px 0;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .brand-text {
+            font-size: 1.25rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: -10px;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Main Content & Footer Styles */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        .section h4 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style-type: none;
+            padding: 0;
+            display: inline-block;
+            text-align: left;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .feature-list li::before {
+            content: '\2022';
+            position: absolute;
+            left: 0;
+            color: #fff;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .member-button {
+            display: inline-block;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+        
+        .member-button:hover {
+            background-color: #fff;
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #000;
+            color: #ccc;
+            padding: 60px 20px;
+            border-top: 1px solid #333;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h5 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-column ul li a:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .new-banner h1, .banner-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .new-banner p, .banner-container p {
+                font-size: 1rem;
+            }
+            
+            .explore-link {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .footer-column {
+                min-width: 100%;
+            }
+
+            .footer-column ul {
+                text-align: center;
+            }
+            
+            .footer-column ul li a {
+                display: block;
+            }
+            
+            .section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section h3 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- New Banner Section -->
+    <div class="new-banner">
+        <a href="/shop" class="explore-link" aria-label="Explore our collection">Explore</a>
+        <div class="new-banner-content">
+            <h1>STATEMENT PIECES. <br>EVERYDAY ICONS.</h1>
+            <p>Jewelry Designed To Elevate The Everyday. <br>Made For Him — Built To Stand Apart.</p>
+        </div>
+    </div>
+
+    <!-- Promotional Banner -->
+    <div class="banner-container" role="banner" aria-label="Promotional offer banner">
+        <div class="banner-content">
+            <h2 class="banner-title">Top Deals</h2>
+            <p class="promo-text">Up to</p>
+            <h1 class="discount">30% OFF</h1>
+            <p class="brand-text">Selected Brands</p>
+            <a href="/shop" class="cta-button" aria-label="Shop now and save up to 30% off selected brands">Shop Now</a>
+        </div>
+    </div>
+
+    <!-- Main Content Sections -->
+    <main class="main-container">
+        <!-- "WHY ZYVRA" Section -->
+        <section class="section">
+            <h2>WHY ZYVRA</h2>
+            <h3>Luxury Isn't Loud. It's Worn Well.</h3>
+            <ul class="feature-list">
+                <li>Minimal Designs With Maximum Edge</li>
+                <li>Crafted With Premium Hypoallergenic Metals</li>
+                <li>Designed For All-Day Flex And Shine</li>
+            </ul>
+        </section>
+        
+        <!-- "REFER & EARN" Section -->
+        <section class="section">
+            <h2>REFER & EARN</h2>
+            <p>Share The Love And Get Rewarded When Your Friends Make A Purchase!</p>
+            <a href="/membership" class="member-button" aria-label="Become a member">Become A Member</a>
+        </section>
+
+        <!-- "JOIN THE TEAM" Section -->
+        <section class="section">
+            <h4>JOIN THE TEAM</h4>
+            <p>Be The First In Line For New Drops, Limited Offers, And VIP Community Events</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Customer Support Column -->
+            <div class="footer-column">
+                <h5>CUSTOMER SUPPORT</h5>
+                <ul>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/shipping">Shipping Information</a></li>
+                    <li><a href="/track">Track My Order</a></li>
+                    <li><a href="/returns">Start Your Return</a></li>
+                    <li><a href="/policy">Return & Exchange Policy</a></li>
+                </ul>
+            </div>
+            
+            <!-- Explore Column -->
+            <div class="footer-column">
+                <h5>EXPLORE</h5>
+                <ul>
+                    <li><a href="/movie">The Movie So Far</a></li>
+                    <li><a href="/members">The Members Club</a></li>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                    <li><a href="/terms">Terms Of Business</a></li>
+                </ul>
+            </div>
+
+            <!-- Shop Column -->
+            <div class="footer-column">
+                <h5>SHOP</h5>
+                <ul>
+                    <li><a href="/all">View All</a></li>
+                    <li><a href="/wanted">Most Wanted</a></li>
+                    <li><a href="/chains">Chains</a></li>
+                    <li><a href="/bracelets">Bracelets</a></li>
+                    <li><a href="/new">New This Week</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

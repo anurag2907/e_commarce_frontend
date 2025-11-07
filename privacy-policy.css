@@ -1,0 +1,215 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: bisque;
+    background-color: black;
+    overflow-x: hidden;
+}
+
+
+img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: top left;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0.2;
+    animation: fadeIn 2s ease-in-out;
+}
+
+body {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(0, 0, 0, 0.9);
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
+    animation: slideUp 1.5s ease-out;
+    text-align: center;
+}
+h1 {
+    color: rgb(251, 249, 247);
+    margin-bottom: 1rem;
+    animation: slideInFromLeft 1s ease-out 0.5s both;
+    position: relative;
+    text-align: center;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f8f6f5, #f3f2f2);
+    animation: expandWidth 1s ease-out 1.5s forwards;
+}
+
+h4 {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease-out both;
+    animation-delay: calc(var(--animation-order, 0) * 0.1s);
+    text-align: center;
+    display: inline-block;
+    max-width: 100%;
+    color: rgb(252, 252, 251);
+}
+
+h4:hover {
+    border-left-color: #fbfaf9;
+    background: rgba(240, 238, 237, 0.2);
+    transform: translateX(10px);
+    padding-left: 1.5rem;
+}
+
+p {
+    animation: fadeIn 1.5s ease-out 0.8s both;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    color: rgb(250, 250, 249);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+h1:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+h4:nth-child(1) { --animation-order: 1; }
+h4:nth-child(2) { --animation-order: 2; }
+h4:nth-child(3) { --animation-order: 3; }
+h4:nth-child(4) { --animation-order: 4; }
+h4:nth-child(5) { --animation-order: 5; }
+h4:nth-child(6) { --animation-order: 6; }
+h4:nth-child(7) { --animation-order: 7; }
+h4:nth-child(8) { --animation-order: 8; }
+h4:nth-child(9) { --animation-order: 9; }
+h4:nth-child(10) { --animation-order: 10; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.9);
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        color: rgb(242, 241, 240);
+    }
+    
+    h4 {
+        font-size: 0.9rem;
+        text-align: center;
+        color: rgb(243, 242, 242);
+    }
+    
+    p {
+        text-align: center;
+        color: rgb(252, 251, 251);
+    }
+}
+
+@keyframes pageLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+body {
+    animation: pageLoad 1s ease-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+h1:first-of-type {
+    animation: slideInFromLeft 1s ease-out 0.5s both, pulse 2s ease-in-out 2s infinite;
+}

@@ -1,0 +1,52 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: fit-content;
+  font-size: 40px;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #0000;
+  -webkit-text-stroke: 1px #fff;
+  --g:conic-gradient(#fff 0 0) no-repeat text;
+  background:var(--g) 0,var(--g) 1ch,var(--g) 2ch,var(--g) 3ch,var(--g) 4ch,var(--g) 5ch,var(--g) 6ch;
+  animation: 
+    l18-0 2s linear infinite alternate,
+    l18-1 4s linear infinite;
+}
+.loader:before {
+  content: "zyvar";
+}
+@keyframes l18-0 {
+  0%     {background-size: 1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   }
+  14.28% {background-size: 1ch 100%,1ch 50% ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   }
+  28.57% {background-size: 1ch 100%,1ch 100%,1ch 50% ,1ch 0   ,1ch 0   ,1ch 0   ,1ch 0   }
+  42.85% {background-size: 1ch 100%,1ch 100%,1ch 100%,1ch 50% ,1ch 0   ,1ch 0   ,1ch 0   }
+  57.14% {background-size: 1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 50% ,1ch 0   ,1ch 0   }
+  71.43% {background-size: 1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 50% ,1ch 0   }
+  85.71% {background-size: 1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 50% }
+  100%   {background-size: 1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%,1ch 100%}
+}
+@keyframes l18-1 {
+  0%,50%    {background-position-y: 100%}
+  50.01%,to {background-position-y: 0   }
+}
+
+/* New animation combined as requested */
+/* HTML: <div class="loader2"></div> */
+.loader2 {
+  height: 15px;
+  width: 60px;
+  --c:no-repeat repeating-linear-gradient(#0000 0 6px,#000 0 9px,#0000 0 15px);
+  background: var(--c), var(--c), var(--c), var(--c);
+  background-size: 26% 200%;
+  animation: l4 4s linear infinite alternate;
+}
+@keyframes l4 {
+  0%,
+  70%,
+  100%  {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 100%,calc(2*100%/3) 100%,calc(3*100%/3) 100%}
+  17.5% {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 100%,calc(2*100%/3) 100%,calc(3*100%/3) 100%}
+  35%   {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 0   ,calc(2*100%/3) 100%,calc(3*100%/3) 100%}
+  52.5% {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 0   ,calc(2*100%/3) 0   ,calc(3*100%/3) 100%}
+  69.99%{background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 0   ,calc(2*100%/3) 0   ,calc(3*100%/3) 0   }
+}
